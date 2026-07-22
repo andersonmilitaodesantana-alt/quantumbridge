@@ -3,147 +3,226 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quantum Bridge — Automação Inteligente para seu Negócio</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚡</text></svg>">
+<title>Quantum Bridge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root {
+  --primary: #050245;
+  --accent: #9A40FF;
+  --heading: #0F2A71;
+  --text: #171923;
+  --text-light: #54595F;
+  --bg: #ffffff;
+  --bg-light: #F9F9F9;
+  --border: #E9E9E9;
+  --white: #ffffff;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a2e;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:0 20px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.6}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
 
-.hero{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);color:#fff;padding:80px 0 60px;text-align:center}
-.hero h1{font-size:2.5rem;margin-bottom:16px;font-weight:800}
-.hero p{font-size:1.2rem;opacity:.9;max-width:600px;margin:0 auto}
-.hero .badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:6px 16px;border-radius:20px;font-size:.85rem;margin-top:20px}
+/* nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+nav .logo{font-family:var(--font-heading);font-weight:700;font-size:1.2rem;color:var(--primary)}
+nav .logo span{color:var(--accent)}
+nav a{color:var(--text-light);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s;margin-left:32px}
+nav a:hover{color:var(--accent)}
+nav .cta{background:var(--accent);color:var(--white)!important;padding:10px 22px;border-radius:6px;font-weight:600}
+nav .cta:hover{opacity:.9;color:var(--white)!important}
 
-.section{padding:60px 0}
-.section h2{text-align:center;font-size:1.8rem;margin-bottom:40px;color:#1a1a2e}
+/* hero */
+.hero{padding:72px 0 56px;display:flex;align-items:center;gap:48px}
+.hero-content{flex:1}
+.hero .badge{display:inline-block;background:rgba(154,64,255,.1);color:var(--accent);padding:6px 16px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:20px}
+.hero h1{font-family:var(--font-heading);font-size:2.5rem;font-weight:600;line-height:1.3;color:var(--heading);margin-bottom:16px}
+.hero p{font-size:1.05rem;color:var(--text-light);max-width:480px;margin-bottom:28px}
+.hero .btn{display:inline-block;background:var(--accent);color:var(--white);padding:14px 32px;border-radius:6px;font-weight:700;text-decoration:none;font-size:.95rem;transition:opacity .2s;border:none;cursor:pointer}
+.hero .btn:hover{opacity:.9}
+.hero .btn-outline{display:inline-block;background:0 0;color:var(--primary);padding:14px 28px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;margin-left:12px;border:1px solid var(--border);transition:border .2s,color .2s}
+.hero .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-image{flex:1;text-align:center}
+.hero-image svg{width:100%;max-width:420px;height:auto}
 
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.product{background:#f8f9fa;border-radius:12px;padding:24px;border:1px solid #eee}
-.product h3{font-size:1rem;margin-bottom:6px;color:#0f3460}
-.product p{font-size:.85rem;color:#555}
-.product .tag{display:inline-block;background:#0f3460;color:#fff;font-size:.7rem;padding:2px 8px;border-radius:10px;font-weight:600;margin-bottom:8px}
+/* sections */
+.section{padding:64px 0}
+.section-alt{background:var(--bg-light)}
+.section-title{text-align:center;margin-bottom:44px}
+.section-title h2{font-family:var(--font-heading);font-size:2rem;font-weight:600;color:var(--heading);margin-bottom:8px}
+.section-title p{color:var(--text-light);font-size:.95rem;max-width:520px;margin:0 auto}
 
-.video-box{background:#1a1a2e;border-radius:12px;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;max-width:640px;margin:0 auto}
-.video-box .play{font-size:48px;margin-bottom:8px}
-.video-box p{font-size:.9rem;opacity:.7}
+/* cards */
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:32px 28px;text-align:center;transition:border .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card .icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.card .icon.purple{background:rgba(154,64,255,.1);color:var(--accent)}
+.card .icon.blue{background:rgba(15,42,113,.1);color:var(--heading)}
+.card .icon.green{background:rgba(33,216,146,.15);color:#21D892}
+.card h3{font-family:var(--font-heading);font-size:1.05rem;font-weight:600;color:var(--primary);margin-bottom:6px}
+.card p{font-size:.85rem;color:var(--text-light);line-height:1.5}
 
-.form-box{max-width:480px;margin:0 auto;background:#f8f9fa;padding:28px;border-radius:12px;border:1px solid #eee}
-.form-box input,.form-box button{width:100%;padding:12px 14px;border-radius:8px;font-size:1rem;margin-bottom:10px}
-.form-box input{border:1px solid #ddd}
-.form-box button{background:#0f3460;color:#fff;border:none;font-weight:700;cursor:pointer}
-.form-box button:hover{background:#1a1a2e}
-.form-box .note{text-align:center;font-size:.8rem;color:#888}
+/* form */
+.form-wrapper{max-width:540px;margin:0 auto;background:var(--white);border:1px solid var(--border);border-radius:10px;padding:40px 36px;text-align:center}
+.form-wrapper h3{font-family:var(--font-heading);font-size:1.2rem;font-weight:600;color:var(--primary);margin-bottom:4px}
+.form-wrapper p{font-size:.85rem;color:var(--text-light);margin-bottom:24px}
+.form-group{margin-bottom:16px;text-align:left}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--primary);margin-bottom:4px}
+.form-group input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:6px;font-family:var(--font-body);font-size:.9rem;color:var(--text);outline:0;transition:border .2s}
+.form-group input:focus{border-color:var(--accent)}
+.form-btn{width:100%;background:var(--accent);color:var(--white);padding:14px;border:none;border-radius:6px;font-family:var(--font-heading);font-size:.95rem;font-weight:600;cursor:pointer;transition:opacity .2s}
+.form-btn:hover{opacity:.9}
 
-.footer{background:#1a1a2e;color:#fff;text-align:center;padding:32px 0;font-size:.85rem}
-.footer a{color:#fff;text-decoration:none}
-.footer .social{margin:12px 0}
-.whatsapp-btn{display:inline-block;background:#25D366;color:#fff!important;padding:10px 20px;border-radius:8px;font-weight:700;text-decoration:none;font-size:.95rem}
-.whatsapp-btn:hover{background:#128C7E}
+/* contact bar */
+.contact-bar{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:16px 0 0}
+.contact-bar a{display:inline-flex;align-items:center;gap:8px;color:var(--text-light);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s;padding:8px 16px;border:1px solid var(--border);border-radius:6px}
+.contact-bar a:hover{color:var(--accent);border-color:var(--accent)}
+.contact-bar .whatsapp{background:#21D892;color:var(--white)!important;border:none}
+.contact-bar .whatsapp:hover{opacity:.9}
 
-.qr-box{text-align:center;padding:20px 0}
-.qr-box img{width:140px;height:140px;border:2px solid #eee;border-radius:8px;margin:8px 0}
+/* footer */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#21D892;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 16px rgba(33,216,146,.4);z-index:999;transition:transform .2s}
+.whatsapp-float:hover{transform:scale(1.08)}
+footer{padding:28px 0;text-align:center;border-top:1px solid var(--border)}
+footer p{font-size:.75rem;color:var(--text-light)}
 
 @media(max-width:768px){
-.hero h1{font-size:1.6rem}
-.hero{padding:50px 0 40px}
-.section{padding:40px 0}
+  .hero{flex-direction:column;padding:40px 0;text-align:center}
+  .hero p{margin:0 auto 28px}
+  .hero h1{font-size:1.8rem}
+  .hero-image{display:none}
+  .cards-grid{grid-template-columns:1fr}
+  nav a{margin-left:14px;font-size:.8rem}
+  nav .cta{padding:8px 14px;font-size:.8rem}
+  .section{padding:40px 0}
+  .section-title h2{font-size:1.5rem}
 }
 </style>
 </head>
 <body>
 
+<div class="container">
+  <nav>
+    <div class="logo">Quantum<span>Bridge</span></div>
+    <div>
+      <a href="#">Home</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#contato" class="cta">Fale conosco</a>
+    </div>
+  </nav>
+</div>
+
 <section class="hero">
-<div class="container">
-<h1>Automação Inteligente para seu Negócio</h1>
-<p>Soluções de IA para pequenas e médias empresas. Atendimento 24h, captura de leads e redução de custos.</p>
-<div class="badge">⚡ Parceiro Autorizado Synmatic AI</div>
-</div>
+  <div class="container" style="display:flex;align-items:center;gap:48px;flex-wrap:wrap">
+    <div class="hero-content">
+      <div class="badge">Consultoria em automação</div>
+      <h1>Solução sob medida<br>pra <span style="color:var(--accent)">seu negócio</span></h1>
+      <p>Tecnologia que atende, organiza e faz seu negócio crescer — sem complicação.</p>
+      <a href="#contato" class="btn">Quero conhecer</a>
+      <a href="#como-funciona" class="btn-outline">Entender melhor</a>
+    </div>
+    <div class="hero-image">
+      <svg viewBox="0 0 400 320" fill="none">
+        <rect x="50" y="30" width="300" height="200" rx="16" fill="#F3F3F3" stroke="#E9E9E9" stroke-width="1"/>
+        <rect x="70" y="60" width="120" height="12" rx="6" fill="#9A40FF" opacity=".15"/>
+        <rect x="70" y="85" width="200" height="8" rx="4" fill="#E9E9E9"/>
+        <rect x="70" y="105" width="180" height="8" rx="4" fill="#E9E9E9"/>
+        <rect x="70" y="125" width="160" height="8" rx="4" fill="#E9E9E9"/>
+        <rect x="70" y="155" width="100" height="32" rx="8" fill="#9A40FF"/>
+        <circle cx="290" cy="160" r="40" fill="#050245" opacity=".08"/>
+        <path d="M278 160l8 8 16-16" stroke="#9A40FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="100" y="210" width="200" height="50" rx="25" fill="#050245" opacity=".06"/>
+        <text x="200" y="242" text-anchor="middle" fill="#050245" font-size="11" font-family="Inter" opacity=".6">atendimento automatizado</text>
+        <rect x="60" y="250" width="280" height="4" rx="2" fill="#E9E9E9"/>
+        <rect x="60" y="250" width="180" height="4" rx="2" fill="#21D892"/>
+      </svg>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<h2>Nossas Soluções</h2>
-<div class="products">
-<div class="product">
-<div class="tag">Agente de Atendimento</div>
-<h3>WhatsApp e Instagram 24h</h3>
-<p>Resposta automática. Cliente nunca mais espera.</p>
-</div>
-<div class="product">
-<div class="tag">Disparos Inteligentes</div>
-<h3>Cupons e lembretes</h3>
-<p>Mensagens no momento certo. Aumente a conversão.</p>
-</div>
-<div class="product">
-<div class="tag">Automação de Pedidos</div>
-<h3>Conversa vira pedido</h3>
-<p>Sem digitar. Sem erros. Tudo integrado.</p>
-</div>
-<div class="product">
-<div class="tag">Geração de Leads</div>
-<h3>Captura automática</h3>
-<p>Qualificação inteligente. Nenhum lead escapa.</p>
-</div>
-</div>
-<p style="text-align:center;margin-top:24px;font-size:.9rem;color:#555">Soluções sob medida para cada negócio. <a href="#contato"><strong>Quero saber mais</strong></a>.</p>
-</div>
-</section>
-
-<section class="section" style="background:#f8f9fa">
-<div class="container">
-<h2>Veja como funciona</h2>
-<div class="video-box">
-<div>
-<div class="play">▶</div>
-<p>Vídeo de demonstração — gravando em breve</p>
-</div>
-</div>
-</div>
+<section class="section section-alt" id="como-funciona">
+  <div class="container">
+    <div class="section-title">
+      <h2>Como funciona</h2>
+      <p>Um sistema pensado para o dono do negócio — simples, direto e eficiente.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="icon purple">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>Diagnóstico gratuito</h3>
+        <p>Entendemos como seu negócio atende hoje e apontamos onde dá pra melhorar — sem compromisso.</p>
+      </div>
+      <div class="card">
+        <div class="icon blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>Solução na medida</h3>
+        <p>Cada negócio é único. Montamos a ferramenta certa pro seu tamanho, pro seu ramo, pro seu bolso.</p>
+      </div>
+      <div class="card">
+        <div class="icon green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>Suporte que funciona</h3>
+        <p>Não é só entregar e sumir. Você e sua equipe têm acompanhamento pra tudo rodar direito.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section" id="contato">
-<div class="container">
-<h2>Quero saber mais</h2>
-<div class="form-box">
-<form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
-<input type="text" name="entry.XXXXXXX" placeholder="Seu nome" required>
-<input type="tel" name="entry.XXXXXXX" placeholder="WhatsApp com DDD" required>
-<input type="text" name="entry.XXXXXXX" placeholder="Nome da empresa" required>
-<button type="submit">Quero ser atendido</button>
-</form>
-<p class="note">A Synmatic AI entra em contato com uma proposta sob medida.</p>
-</div>
-</div>
+  <div class="container">
+    <div class="section-title">
+      <h2>Vamos conversar?</h2>
+      <p>Sem roteiro pronto, sem pressão. Conte o que você precisa e a gente vê o que faz sentido.</p>
+    </div>
+    <div class="form-wrapper">
+      <h3>Solicitar contato</h3>
+      <p>Preencha seus dados que retornamos em até 24h.</p>
+      <form>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp</label>
+          <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+        </div>
+        <div class="form-group">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" placeholder="Nome do seu negócio">
+        </div>
+        <button type="submit" class="form-btn">Quero saber mais</button>
+      </form>
+    </div>
+    <div class="contact-bar">
+      <a href="https://wa.me/5511999999999" class="whatsapp" target="_blank">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fale pelo WhatsApp
+      </a>
+      <a href="mailto:contato@quantumbridge.com.br">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        contato@quantumbridge.com.br
+      </a>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<div class="qr-box">
-<h2>Compartilhe</h2>
-<img src="qrcode.png" alt="QR Code">
-<p style="font-size:.85rem;color:#666">Escaneie e veja as soluções no celular</p>
-</div>
-</div>
-</section>
+<a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-<footer class="footer">
-<div class="container">
-<p><strong>Quantum Bridge</strong></p>
-<p>Parceiro Autorizado Synmatic AI</p>
-<div class="social">
-<a href="https://wa.me/5511999999999" class="whatsapp-btn" target="_blank">📱 Fale Conosco</a>
-</div>
-<p>📧 contato@quantumbridge.com.br</p>
-<p style="margin-top:8px;opacity:.5;font-size:.75rem">Captamos o lead. A Synmatic resolve o resto.</p>
-</div>
+<footer>
+  <div class="container">
+    <p>Quantum Bridge — CNPJ: 00.000.000/0001-00</p>
+  </div>
 </footer>
 
-<script>
-document.querySelector('form').addEventListener('submit',function(){
-this.querySelector('button').textContent='Enviado!';
-this.querySelector('button').disabled=true;
-});
-</script>
 </body>
 </html>
