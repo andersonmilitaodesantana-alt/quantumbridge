@@ -94,8 +94,8 @@ nav .logo img{height:52px;width:auto;display:block}
   border:1px solid rgba(255,255,255,.3);transition:border .2s
 }
 .hero .btn-outline:hover{border-color:#fff}
-.hero-image{flex:1;text-align:center}
-.hero-image img{width:100%;max-width:340px;height:auto;filter:drop-shadow(0 8px 32px rgba(0,0,0,.2))}
+.hero-image img{width:100%;height:auto;max-width:480px;filter:drop-shadow(0 8px 32px rgba(0,0,0,.2))}
+.hero-image{flex:none;text-align:center}
 
 /* sections */
 .section{padding:72px 0}
@@ -232,19 +232,20 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 </nav>
 
 <section class="hero" id="home">
-  <div class="container hero-inner">
+  <div class="container hero-inner" style="flex-direction:column;text-align:center;gap:32px">
+    <div class="hero-image">
+      <img src="logo-hero.png" alt="Quantum Bridge" style="max-width:480px;width:100%;height:auto;filter:drop-shadow(0 8px 32px rgba(0,0,0,.2))">
+    </div>
     <div class="hero-content">
       <h1>Conexões de IA & TI<br><span>pra transformar seu negócio</span></h1>
       <p>Agentes autônomos, automação inteligente e geração de leads — tecnologia que atende, organiza e capta clientes automaticamente.</p>
       <p style="font-size:.7rem;color:#c89440;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-weight:500">Inteligência Artificial · Automação Inteligente · Integração de Sistemas · Estratégia e Confiança</p>
       <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:-8px;margin-bottom:28px">Powered by Synmatic AI</p>
-      <div class="hero-btns">
+      <div class="hero-btns" style="justify-content:center">
         <a href="#contato" class="btn-primary">Quero conhecer</a>
         <a href="#como-funciona" class="btn-outline">Entender melhor</a>
       </div>
     </div>
-    <div class="hero-image">
-      <img src="logo-hero.png" alt="Quantum Bridge" style="max-width:340px;width:100%;height:auto;filter:drop-shadow(0 8px 32px rgba(0,0,0,.2))">
     </div>
   </div>
 </section>
