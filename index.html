@@ -51,7 +51,7 @@ nav .logo img{height:52px;width:auto;display:block}
 
 /* hero */
 .hero{
-  background:linear-gradient(170deg, #002244 0%, #001833 30%, #002244 60%, #0a2a44 80%, #1a2a3a 100%);
+  background:linear-gradient(170deg, #002244 0%, #001833 25%, #002244 55%, #1a2a3a 78%, #2a3428 90%, #3a3420 100%);
   padding:72px 0 64px;
   position:relative;
   overflow:hidden
@@ -63,6 +63,14 @@ nav .logo img{height:52px;width:auto;display:block}
   width:600px;height:600px;
   background:rgba(255,255,255,.03);
   border-radius:50%;
+  pointer-events:none
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-30%;left:-15%;
+  width:400px;height:400px;
+  background:radial-gradient(circle, rgba(200,148,64,.04) 0%, transparent 70%);
   pointer-events:none
 }
 .hero-inner{display:flex;align-items:center;gap:56px;position:relative;z-index:1}
@@ -115,7 +123,7 @@ nav .logo img{height:52px;width:auto;display:block}
 
 /* form section */
 .form-section{
-  background:linear-gradient(170deg, #002244 0%, #001833 40%, #002244 100%);
+  background:linear-gradient(170deg, #002244 0%, #001833 35%, #002244 65%, #2a3428 85%, #3a3420 100%);
   padding:72px 0
 }
 .form-section .section-title h2{color:#fff}
@@ -202,7 +210,7 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 </head>
 <body>
 
-<nav style="background:linear-gradient(90deg,#ffffff 0%,#d0d8e0 25%,#6a7a8a 50%,#002244 75%,#001833 100%);padding:0 24px;border-bottom:none">
+<nav style="background:linear-gradient(90deg,#ffffff 0%,#e8eaf0 20%,#8899aa 45%,#002244 75%,#001833 100%);padding:0 24px;border-bottom:none">
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%">
     <a href="#" class="logo"><img src="logo-nav.png" alt="Quantum Bridge"></a>
     <div class="nav-menu">
