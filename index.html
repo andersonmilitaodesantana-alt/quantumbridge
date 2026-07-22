@@ -13,11 +13,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --primary: #050245;
-  --accent: #9A40FF;
-  --accent-hover: #7B22E0;
-  --heading: #0F2A71;
-  --text: #353535;
+  --primary: #002244;
+  --primary-dark: #001833;
+  --accent: #c89440;
+  --accent-hover: #b07d30;
+  --heading: #002244;
+  --text: #333333;
   --text-light: #54595F;
   --bg: #ffffff;
   --bg-light: #F9F9F9;
@@ -42,7 +43,7 @@ nav .logo img{height:52px;width:auto;display:block}
 .nav-menu a:hover{color:#fff;background:rgba(255,255,255,.08)}
 .nav-menu .cta-nav{background:rgba(255,255,255,.15);color:#fff!important;padding:8px 20px;border-radius:6px;font-weight:600;border:1px solid rgba(255,255,255,.2)}
 .nav-menu .cta-nav:hover{background:rgba(255,255,255,.25)}
-.nav-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(5,2,69,.95);z-index:998;display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.nav-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,34,68,.97);z-index:998;display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px}
 .nav-overlay.show{display:flex}
 .nav-overlay a{color:#fff;text-decoration:none;font-family:var(--font-heading);font-size:1.4rem;font-weight:500;transition:opacity .2s}
 .nav-overlay a:hover{opacity:.7}
@@ -50,7 +51,7 @@ nav .logo img{height:52px;width:auto;display:block}
 
 /* hero */
 .hero{
-  background:linear-gradient(135deg, #9A40FF 0%, #7B22E0 25%, #5222A5 50%, #050245 100%);
+  background:linear-gradient(135deg, #002244 0%, #002244 30%, #1a2a40 50%, #4a3c28 75%, #c89440 100%);
   padding:72px 0 64px;
   position:relative;
   overflow:hidden
@@ -103,18 +104,18 @@ nav .logo img{height:52px;width:auto;display:block}
 }
 .card:hover{
   border-color:var(--accent);transform:translateY(-4px);
-  box-shadow:0 8px 32px rgba(154,64,255,.1)
+  box-shadow:0 8px 32px rgba(200,148,64,.15)
 }
 .card .icon{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.card .icon.purple{background:rgba(154,64,255,.1);color:var(--accent)}
-.card .icon.blue{background:rgba(15,42,113,.08);color:var(--heading)}
+.card .icon.purple{background:rgba(200,148,64,.12);color:#c89440}
+.card .icon.blue{background:rgba(0,34,68,.08);color:var(--heading)}
 .card .icon.green{background:rgba(33,216,146,.12);color:#1DBF73}
 .card h3{font-family:var(--font-heading);font-size:1.05rem;font-weight:600;color:var(--primary);margin-bottom:8px}
 .card p{font-size:.85rem;color:var(--text-light);line-height:1.6}
 
 /* form section */
 .form-section{
-  background:linear-gradient(135deg, #050245 0%, #0F2A71 50%, #5222A5 100%);
+  background:linear-gradient(135deg, #002244 0%, #001833 30%, #2a3028 60%, #4a3c28 85%, #b8862c 100%);
   padding:72px 0
 }
 .form-section .section-title h2{color:#fff}
@@ -140,12 +141,12 @@ nav .logo img{height:52px;width:auto;display:block}
 .form-group input::placeholder{color:rgba(255,255,255,.35)}
 .form-group input:focus{border-color:var(--accent)}
 .form-btn{
-  width:100%;background:var(--accent);color:#fff;
+  width:100%;background:var(--primary);color:#fff;
   padding:14px;border:none;border-radius:6px;
   font-family:var(--font-heading);font-size:.9rem;font-weight:600;cursor:pointer;
   transition:opacity .2s
 }
-.form-btn:hover{opacity:.9}
+.form-btn:hover{opacity:.85}
 
 /* contact bar */
 .contact-bar{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:20px}
@@ -178,7 +179,7 @@ nav .logo img{height:52px;width:auto;display:block}
 .whatsapp-float:hover{transform:scale(1.08)}
 
 /* footer */
-footer{padding:28px 0;text-align:center;background:var(--primary)}
+footer{padding:32px 0;text-align:center;background:var(--primary)}
 footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 
 @media(max-width:768px){
@@ -199,7 +200,7 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 </head>
 <body>
 
-<nav style="background:linear-gradient(135deg,#9A40FF,#050245);padding:0 24px;border-bottom:1px solid rgba(255,255,255,.06)">
+<nav style="background:linear-gradient(135deg,#002244,#1a2a40,#4a3c28);padding:0 24px;border-bottom:1px solid rgba(255,255,255,.06)">
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%">
     <a href="#" class="logo"><img src="logo-nav.png" alt="Quantum Bridge"></a>
     <div class="nav-menu">
@@ -222,8 +223,10 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 <section class="hero" id="home">
   <div class="container hero-inner">
     <div class="hero-content">
-      <h1>Solução inteligente<br><span>pra fazer seu negócio crescer</span></h1>
-      <p>Tecnologia que atende, organiza e capta clientes automaticamente — sem complicação e sem investimento inicial.</p>
+      <h1>Conexões de IA & TI<br><span>pra transformar seu negócio</span></h1>
+      <p>Agentes autônomos, automação inteligente e geração de leads — tecnologia que atende, organiza e capta clientes automaticamente.</p>
+      <p style="font-size:.7rem;color:rgba(200,148,64,.7);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-weight:500">Inteligência Artificial · Automação Inteligente · Integração de Sistemas · Estratégia e Confiança</p>
+      <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:-8px;margin-bottom:28px">Powered by Synmatic AI</p>
       <div class="hero-btns">
         <a href="#contato" class="btn-primary">Quero conhecer</a>
         <a href="#como-funciona" class="btn-outline">Entender melhor</a>
@@ -238,30 +241,30 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 <section class="section section-alt" id="como-funciona">
   <div class="container">
     <div class="section-title">
-      <h2>Como funciona</h2>
-      <p>Um modelo pensado pra você — sem estresse, sem complicação.</p>
+      <h2>Nossas soluções</h2>
+      <p>Inteligência artificial, automação e estratégia pra transformar seu negócio.</p>
     </div>
     <div class="cards-grid">
       <div class="card">
         <div class="icon purple">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
-        <h3>Diagnóstico gratuito</h3>
-        <p>Entendemos como seu negócio atende hoje e apontamos onde dá pra melhorar — sem compromisso.</p>
+        <h3>Agentes autônomos de IA</h3>
+        <p>Voz, atendimento e operações automatizadas — disponíveis 24 horas por dia, 7 dias por semana.</p>
       </div>
       <div class="card">
         <div class="icon blue">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
-        <h3>Solução na medida</h3>
-        <p>Cada negócio é único. Montamos a ferramenta certa pro seu tamanho, pro seu ramo.</p>
+        <h3>Automação inteligente</h3>
+        <p>Marketing, processos e integração de sistemas — conectamos tudo que seu negócio precisa.</p>
       </div>
       <div class="card">
         <div class="icon green">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3>Acompanhamento real</h3>
-        <p>Não é só entregar e sumir. Você e sua equipe têm suporte pra tudo rodar direito.</p>
+        <h3>Geração de leads</h3>
+        <p>Captura e qualificação automática de contatos com estratégia personalizada pra você.</p>
       </div>
     </div>
   </div>
@@ -270,8 +273,8 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 <section class="form-section" id="contato">
   <div class="container">
     <div class="section-title">
-      <h2>Solicitar contato</h2>
-      <p>Preencha seus dados e retornamos em até 24h.</p>
+      <h2>Vamos construir o futuro juntos?</h2>
+      <p>Conte com a Quantum Bridge pra transformar seu negócio com tecnologia de ponta.</p>
     </div>
     <div class="form-card">
       <h3>Fale com a Quantum Bridge</h3>
