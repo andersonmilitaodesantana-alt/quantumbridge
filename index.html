@@ -191,8 +191,155 @@ nav .logo img{height:52px;width:auto;display:block}
 footer{padding:32px 0;text-align:center;background:var(--primary)}
 footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 
+/* chat widget - estilo Sophia */
+.chat-btn{
+  position:fixed;bottom:90px;right:24px;z-index:999;
+  cursor:pointer;transition:transform .2s;border:none;background:none
+}
+.chat-btn:hover{transform:scale(1.05)}
+.chat-btn-avatar{
+  width:60px;height:60px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),#b07d30);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:1.1rem;
+  box-shadow:0 4px 24px rgba(200,148,64,.35);
+  position:relative;overflow:hidden
+}
+.chat-btn-avatar svg{width:30px;height:30px;fill:currentColor}
+.chat-btn-ring{
+  position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;
+  border-radius:50%;border:2px solid var(--accent);
+  animation:pulse-ring 2s infinite
+}
+.chat-btn-label{
+  position:absolute;right:68px;top:50%;transform:translateY(-50%);
+  background:var(--primary);color:#fff;padding:6px 14px;
+  border-radius:20px;font-size:.72rem;font-weight:500;white-space:nowrap;
+  box-shadow:0 2px 12px rgba(0,0,0,.12);
+  font-family:var(--font-body);pointer-events:none
+}
+.chat-btn-label::after{
+  content:'';position:absolute;right:-6px;top:50%;
+  transform:translateY(-50%);border:6px solid transparent;
+  border-left-color:var(--primary)
+}
+
+.chat-panel{
+  position:fixed;bottom:160px;right:24px;width:380px;max-width:calc(100vw - 48px);
+  height:520px;max-height:calc(100vh - 200px);
+  background:#fff;border-radius:16px;box-shadow:0 12px 60px rgba(0,0,0,.2);
+  display:none;flex-direction:column;z-index:1000;overflow:hidden;
+  border:1px solid rgba(0,34,68,.1)
+}
+.chat-panel.show{display:flex}
+.chat-header{
+  background:var(--primary);padding:16px 20px;display:flex;
+  align-items:center;gap:12px
+}
+.chat-header-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),#b07d30);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:700;font-size:.95rem;flex-shrink:0;
+  position:relative;overflow:hidden
+}
+.chat-header-avatar svg{width:20px;height:20px;fill:currentColor}
+.chat-header-status{
+  width:10px;height:10px;border-radius:50%;
+  background:#21D892;position:absolute;bottom:0;right:0;
+  border:2px solid var(--primary)
+}
+.chat-header-info{flex:1}
+.chat-header-info strong{color:#fff;font-size:.85rem;display:block}
+.chat-header-info span{color:rgba(255,255,255,.5);font-size:.68rem}
+.chat-close{
+  background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.6);
+  width:28px;height:28px;border-radius:50%;cursor:pointer;
+  font-size:1rem;line-height:1;display:flex;align-items:center;
+  justify-content:center;transition:all .2s
+}
+.chat-close:hover{background:rgba(255,255,255,.2);color:#fff}
+.chat-messages{
+  flex:1;overflow-y:auto;padding:16px 20px;
+  display:flex;flex-direction:column;gap:8px;
+  background:var(--bg-light)
+}
+.chat-msg{
+  max-width:88%;padding:10px 14px;border-radius:12px;
+  font-size:.82rem;line-height:1.5;animation:chatIn .3s
+}
+.chat-msg.bot{
+  background:#fff;border:1px solid var(--border);
+  color:var(--text);align-self:flex-start;
+  border-bottom-left-radius:4px
+}
+.chat-msg.user{
+  background:var(--primary);color:#fff;
+  align-self:flex-end;border-bottom-right-radius:4px
+}
+.chat-msg .typing{
+  display:flex;gap:4px;padding:6px 0
+}
+.chat-msg .typing span{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);animation:typing 1.4s infinite
+}
+.chat-msg .typing span:nth-child(2){animation-delay:.2s}
+.chat-msg .typing span:nth-child(3){animation-delay:.4s}
+.chat-options{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:8px
+}
+.chat-opt{
+  padding:7px 16px;border-radius:18px;border:1px solid var(--primary);
+  background:transparent;color:var(--primary);font-size:.75rem;
+  font-weight:600;cursor:pointer;transition:all .2s;
+  font-family:var(--font-body)
+}
+.chat-opt:hover{background:var(--primary);color:#fff}
+.chat-input-area{
+  display:flex;padding:12px 16px;gap:8px;
+  border-top:1px solid var(--border);background:#fff
+}
+.chat-input{
+  flex:1;border:none;outline:none;padding:8px 0;
+  font-family:var(--font-body);font-size:.82rem;color:var(--text)
+}
+.chat-input::placeholder{color:rgba(0,0,0,.25)}
+.chat-send{
+  background:var(--primary);border:none;color:#fff;
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;transition:opacity .2s
+}
+.chat-send:hover{opacity:.85}
+.chat-send svg{width:16px;height:16px}
+.chat-wa-link{
+  display:flex;align-items:center;gap:8px;
+  margin-top:10px;padding:10px 14px;
+  background:rgba(33,216,146,.1);border-radius:10px;
+  text-decoration:none;color:#075E54;
+  font-size:.78rem;font-weight:500;transition:background .2s
+}
+.chat-wa-link:hover{background:rgba(33,216,146,.2)}
+.chat-wa-link svg{width:18px;height:18px;flex-shrink:0}
+
+@keyframes chatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes typing{
+  0%,100%{opacity:.4;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.3)}
+}
+@keyframes pulse-ring{
+  0%{opacity:.6;transform:scale(1)}
+  50%{opacity:.2;transform:scale(1.08)}
+  100%{opacity:.6;transform:scale(1)}
+}
+
+@media(max-width:480px){
+  .chat-panel{right:12px;left:12px;width:auto;height:65vh;bottom:146px}
+  .chat-btn{bottom:80px;right:12px}
+  .chat-btn-label{display:none}
+}
 @media(max-width:768px){
-  .hero{padding:48px 0}
   .hero-inner{flex-direction:column;gap:32px;text-align:center}
   .hero h1{font-size:1.8rem}
   .hero p{margin:0 auto 28px}
@@ -237,7 +384,7 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
       <img src="logo-hero.png" alt="Quantum Bridge" style="max-width:480px;width:100%;height:auto;filter:drop-shadow(0 8px 32px rgba(0,0,0,.2))">
     </div>
     <div class="hero-content">
-      <h1>Conexões de IA & TI<br><span>pra transformar seu negócio</span></h1>
+      <h1>Conexões de IA e TI<br><span>pra transformar seu negócio</span></h1>
       <p>Agentes autônomos, automação inteligente e geração de leads — tecnologia que atende, organiza e capta clientes automaticamente.</p>
       <p style="font-size:.7rem;color:#c89440;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-weight:500">Inteligência Artificial · Automação Inteligente · Integração de Sistemas · Estratégia e Confiança</p>
       <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:-8px;margin-bottom:28px">Powered by Synmatic AI</p>
@@ -256,27 +403,41 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
       <h2>Nossas soluções</h2>
       <p>Inteligência artificial, automação e estratégia pra transformar seu negócio.</p>
     </div>
-    <div class="cards-grid">
+    <div class="cards-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
       <div class="card">
         <div class="icon purple">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         </div>
-        <h3>Agentes autônomos de IA</h3>
-        <p>Voz, atendimento e operações automatizadas — disponíveis 24 horas por dia, 7 dias por semana.</p>
+        <h3>Agentes Autônomos de IA</h3>
+        <p>Voz, atendimento, WhatsApp e canais digitais — operações automatizadas 24 horas por dia, 7 dias por semana.</p>
       </div>
       <div class="card">
         <div class="icon blue">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
-        <h3>Automação inteligente</h3>
-        <p>Marketing, processos e integração de sistemas — conectamos tudo que seu negócio precisa.</p>
+        <h3>Automação de Marketing</h3>
+        <p>Criação de conteúdo, SEO e campanhas inteligentes — sua marca trabalhando 24 horas por dia.</p>
       </div>
       <div class="card">
         <div class="icon green">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3>Geração de leads</h3>
+        <h3>Geração de Leads</h3>
         <p>Captura e qualificação automática de contatos com estratégia personalizada pra você.</p>
+      </div>
+      <div class="card">
+        <div class="icon purple">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"/><path d="M9 12h6M12 9v6"/></svg>
+        </div>
+        <h3>Integração de Sistemas</h3>
+        <p>Conecte todos os sistemas e ferramentas do seu negócio em um só ecossistema inteligente.</p>
+      </div>
+      <div class="card">
+        <div class="icon blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Consultoria em IA</h3>
+        <p>Estratégia e implementação de inteligência artificial sob medida pro seu negócio.</p>
       </div>
     </div>
   </div>
@@ -305,18 +466,195 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
       </form>
     </div>
     <div class="contact-bar">
-      <a href="https://wa.me/5511999999999" class="wa" target="_blank">Fale pelo WhatsApp</a>
+      <a href="https://wa.me/5511947343007" class="wa" target="_blank">Fale pelo WhatsApp</a>
       <a href="mailto:contato@quantumbridge.com.br">contato@quantumbridge.com.br</a>
     </div>
   </div>
 </section>
 
-<a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+<a href="https://wa.me/5511947343007" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<button class="chat-btn" onclick="toggleChat()" aria-label="Fale com a Bria">
+  <div class="chat-btn-avatar">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+    <div class="chat-btn-ring"></div>
+  </div>
+  <span class="chat-btn-label">Fale com a Bria ✨</span>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header-avatar">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+      <div class="chat-header-status"></div>
+    </div>
+    <div class="chat-header-info">
+      <strong>Bria</strong>
+      <span>Assistente IA • Quantum Bridge</span>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Digite sua mensagem..." onkeydown="if(event.key==='Enter')sendMessage()">
+    <button class="chat-send" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    </button>
+  </div>
+</div>
+
 <script>
 function toggleMenu(){document.getElementById('navOverlay').classList.toggle('show')}
+function toggleChat(){document.getElementById('chatPanel').classList.toggle('show')}
+
+const servicos = {
+  agentes: {
+    nome: 'Agentes Autônomos de IA',
+    desc: 'Assistentes de IA que atendem seus clientes por voz, WhatsApp e canais digitais 24 horas por dia, 7 dias por semana. Eles qualificam leads, respondem dúvidas e executam tarefas automaticamente.',
+    emoji: '🤖'
+  },
+  automacao: {
+    nome: 'Automação de Marketing',
+    desc: 'Criação de conteúdo, SEO e campanhas inteligentes com IA. Sua marca produz posts, anúncios e disparos de e-mail de forma automática e estratégica.',
+    emoji: '📈'
+  },
+  integracao: {
+    nome: 'Integração de Sistemas',
+    desc: 'Conectamos todos os sistemas e ferramentas do seu negócio — CRM, ERP, e-mail, redes sociais — em um só ecossistema que conversa entre si.',
+    emoji: '🔗'
+  },
+  leads: {
+    nome: 'Geração de Leads',
+    desc: 'Captura e qualificação automática de contatos. Páginas de captura, formulários inteligentes e nutrição de leads com IA pra você vender mais.',
+    emoji: '⚡'
+  },
+  consultoria: {
+    nome: 'Consultoria em IA',
+    desc: 'Diagnóstico, estratégia e implementação de inteligência artificial sob medida pro seu negócio. Do planejamento à execução.',
+    emoji: '🧠'
+  }
+};
+
+let chatState = 'inicial';
+function addMessage(texto, tipo) {
+  const el = document.createElement('div');
+  el.className = 'chat-msg ' + tipo;
+  el.innerHTML = texto;
+  document.getElementById('chatMessages').appendChild(el);
+  el.scrollIntoView({behavior:'smooth'});
+}
+function showOptions(opts) {
+  const el = document.createElement('div');
+  el.className = 'chat-msg bot';
+  const html = '<div class="chat-options">' + opts.map(o =>
+    '<button class="chat-opt" onclick="' + o.action + '">' + o.label + '</button>'
+  ).join('') + '</div>';
+  el.innerHTML = html;
+  document.getElementById('chatMessages').appendChild(el);
+  el.scrollIntoView({behavior:'smooth'});
+}
+function startChat() {
+  chatState = 'inicial';
+  addMessage('Olá! Eu sou a <strong>Bria</strong>, assistente de IA da Quantum Bridge. Como posso te ajudar? ✨', 'bot');
+  showOptions([
+    {label: 'Ver serviços', action: 'mostrarServicos()'},
+    {label: 'Falar com equipe', action: 'falarEquipe()'},
+    {label: 'Orçamento rápido', action: 'fazerOrcamento()'}
+  ]);
+}
+function mostrarServicos() {
+  chatState = 'servicos';
+  addMessage('Temos 5 soluções principais. Qual te interessa?', 'bot');
+  showOptions([
+    {label: '🤖 Agentes de IA', action: 'detalhe(\'agentes\')'},
+    {label: '📈 Automação Marketing', action: 'detalhe(\'automacao\')'},
+    {label: '⚡ Geração de Leads', action: 'detalhe(\'leads\')'},
+    {label: '🔗 Integração Sistemas', action: 'detalhe(\'integracao\')'},
+    {label: '🧠 Consultoria IA', action: 'detalhe(\'consultoria\')'},
+    {label: '↩ Voltar', action: 'startChat()'}
+  ]);
+}
+function detalhe(key) {
+  const s = servicos[key];
+  chatState = 'detalhe_' + key;
+  addMessage(s.emoji + ' <strong>' + s.nome + '</strong><br>' + s.desc, 'bot');
+  showOptions([
+    {label: 'Quero contratar', action: 'falarEquipe()'},
+    {label: 'Outro serviço', action: 'mostrarServicos()'},
+    {label: '↩ Voltar ao início', action: 'startChat()'}
+  ]);
+}
+function falarEquipe() {
+  chatState = 'equipe';
+  addMessage('Ótimo! Como prefere falar com a gente?', 'bot');
+  showOptions([
+    {label: '💬 WhatsApp', action: 'openWhatsApp()'},
+    {label: '📧 E-mail', action: 'openEmail()'},
+    {label: '↩ Voltar', action: 'startChat()'}
+  ]);
+}
+function openWhatsApp() {
+  const wa = 'https://wa.me/5511947343007?text=Ol%C3%A1!%20Vim%20do%20site%20da%20Quantum%20Bridge%20e%20quero%20saber%20mais.';
+  addMessage('Clique no link abaixo pra falar conosco no WhatsApp 👇<br><br><a href="' + wa + '" target="_blank" class="chat-wa-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Falar no WhatsApp (app ou web)</a><br><br>💡 <strong>Não tem WhatsApp?</strong> Sem problema, pode continuar conversando aqui comigo ou enviar um e-mail!', 'bot');
+  showOptions([
+    {label: '📧 Prefiro e-mail', action: 'openEmail()'},
+    {label: '↩ Voltar ao início', action: 'startChat()'}
+  ]);
+}
+function openEmail() {
+  addMessage('Envie um e-mail pra gente:<br><br>📧 <strong>contato@quantumbridge.com.br</strong><br><br>Respondemos em até 2 horas úteis ⏰', 'bot');
+  showOptions([
+    {label: '↩ Voltar ao início', action: 'startChat()'}
+  ]);
+}
+function fazerOrcamento() {
+  chatState = 'orcamento';
+  addMessage('Vamos direto ao ponto! Me conta rapidinho: qual área mais precisa de ajuda?', 'bot');
+  showOptions([
+    {label: '🤖 Agentes de IA', action: 'detalhe(\'agentes\')'},
+    {label: '📈 Automação', action: 'detalhe(\'automacao\')'},
+    {label: '⚡ Leads', action: 'detalhe(\'leads\')'},
+    {label: '🔗 Integração', action: 'detalhe(\'integracao\')'},
+    {label: '🧠 Consultoria', action: 'detalhe(\'consultoria\')'},
+    {label: '↩ Voltar', action: 'startChat()'}
+  ]);
+}
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const texto = input.value.trim();
+  if (!texto) return;
+  addMessage(texto, 'user');
+  input.value = '';
+  setTimeout(() => {
+    const t = texto.toLowerCase();
+    if (t.includes('agente')||t.includes('ia')||t.includes('voz')||t.includes('atendimento')) {
+      detalhe('agentes');
+    } else if (t.includes('market')||t.includes('conteúdo')||t.includes('seo')||t.includes('campanha')) {
+      detalhe('automacao');
+    } else if (t.includes('lead')||t.includes('venda')||t.includes('cliente')) {
+      detalhe('leads');
+    } else if (t.includes('sistema')||t.includes('integracao')||t.includes('conect')||t.includes('crm')) {
+      detalhe('integracao');
+    } else if (t.includes('consult')||t.includes('estrateg')||t.includes('implement')) {
+      detalhe('consultoria');
+    } else if (t.includes('serviço')||t.includes('servico')||t.includes('solução')||t.includes('solucao')||t.includes('faz')) {
+      mostrarServicos();
+    } else if (t.includes('contato')||t.includes('whats')||t.includes('falar')||t.includes('humano')||t.includes('equipe')) {
+      falarEquipe();
+    } else if (t.includes('preço')||t.includes('preco')||t.includes('valor')||t.includes('custo')||t.includes('orçamento')||t.includes('orcamento')||t.includes('quanto')) {
+      fazerOrcamento();
+    } else {
+      addMessage('Posso te ajudar com nossos serviços ou falar com a equipe. O que prefere? 😊', 'bot');
+      showOptions([
+        {label: 'Ver serviços', action: 'mostrarServicos()'},
+        {label: 'Falar com equipe', action: 'falarEquipe()'}
+      ]);
+    }
+  }, 600);
+}
+setTimeout(startChat, 1000);
 </script>
 
 <footer>
