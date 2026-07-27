@@ -410,15 +410,19 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
     <div class="form-card">
       <h3>Fale com a Quantum Bridge</h3>
       <p>Sem pressão. A gente descobre juntos o que faz sentido pro seu negócio.</p>
-      <form id="leadForm">
+      <form action="https://formsubmit.co/contato@quantumbridge.com.br" method="POST">
+        <input type="hidden" name="_subject" value="Novo lead - Quantum Bridge">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://quantumbridge.com.br/obrigado.html">
         <div class="form-group">
-          <input type="text" id="leadNome" placeholder="Seu nome" required>
+          <input type="text" name="Nome" placeholder="Seu nome" required>
         </div>
         <div class="form-group">
-          <input type="tel" id="leadTel" placeholder="WhatsApp" required>
+          <input type="tel" name="Telefone" placeholder="WhatsApp" required>
         </div>
         <div class="form-group">
-          <input type="text" id="leadEmpresa" placeholder="Nome da empresa">
+          <input type="text" name="Empresa" placeholder="Nome da empresa">
         </div>
         <button type="submit" class="form-btn">Quero saber mais</button>
       </form>
@@ -434,24 +438,6 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
 </section>
 
 <script>
-document.getElementById('leadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var nome = document.getElementById('leadNome').value.trim();
-  var tel = document.getElementById('leadTel').value.trim();
-  var empresa = document.getElementById('leadEmpresa').value.trim();
-  if (!nome || !tel) return;
-  var msg = 'Olá! Meu nome é ' + nome + ', meu WhatsApp é ' + tel;
-  if (empresa) msg += ', empresa: ' + empresa;
-  msg += '. Quero saber mais sobre IA para meu negócio.';
-  var btn = this.querySelector('.form-btn');
-  btn.textContent = 'Preparando...';
-  btn.disabled = true;
-  var f = this;
-  setTimeout(function() {
-    window.open('https://wa.me/5511947343007?text=' + encodeURIComponent(msg), '_blank');
-    f.innerHTML = '<div style="padding:20px;text-align:center"><h3 style="font-family:Poppins,sans-serif;color:#002244;margin:0 0 8px">Mensagem preparada!</h3><p style="font-family:Inter,sans-serif;color:#54595F;font-size:.85rem;margin:0">Confirme o envio no WhatsApp que foi aberto.</p></div>';
-  }, 400);
-});
 
 function copiarEmail() {
   navigator.clipboard.writeText('contato@quantumbridge.com.br');
