@@ -384,15 +384,12 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
       <h2>Casos de Sucesso</h2>
       <p>Resultados reais de quem já transformou o negócio com tecnologia inteligente.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:900px;margin:0 auto">
-      <div style="text-align:center">
-        <img src="https://aegiscloud.com.br/wp-content/uploads/2025/02/Group-37-1024x219.png" alt="Aegis Cloud" style="max-width:100%;height:auto;border-radius:8px">
-      </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;max-width:700px;margin:0 auto;text-align:center">
       <div>
         <span style="display:inline-block;background:var(--accent);color:#fff;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:4px;margin-bottom:12px;letter-spacing:.5px">PARCEIRO</span>
         <h3 style="font-family:var(--font-heading);font-weight:600;color:var(--primary);font-size:1.5rem;margin:0 0 6px">Aegis Cloud</h3>
         <p style="color:var(--text-light);font-size:.85rem;margin:0 0 16px">Plataforma educacional completa com questões, flashcards, mapas interativos e trilhas de certificação AWS, Azure, GCP e Huawei Cloud. Desenvolvida com parceria de IA.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:18px">
           <span style="background:#e0e0e0;color:#333;font-size:.65rem;padding:2px 8px;border-radius:3px">AWS</span>
           <span style="background:#e0e0e0;color:#333;font-size:.65rem;padding:2px 8px;border-radius:3px">Certificação</span>
           <span style="background:#e0e0e0;color:#333;font-size:.65rem;padding:2px 8px;border-radius:3px">Educação</span>
@@ -429,7 +426,8 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
     <div class="contact-bar">
       <a href="https://wa.me/5511947343007" class="wa" target="_blank">Fale pelo WhatsApp</a>
       <span style="white-space:nowrap">
-        <a href="mailto:contato@quantumbridge.com.br" style="color:var(--accent);text-decoration:underline">contato@quantumbridge.com.br</a>
+        <span onclick="copiarEmail()" style="color:var(--accent);text-decoration:underline;cursor:pointer">contato@quantumbridge.com.br</span>
+        <span id="emailCopiado" style="display:none;font-size:.7rem;color:#c89440;margin-left:4px">Copiado!</span>
       </span>
     </div>
   </div>
@@ -445,8 +443,15 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
   var msg = 'Olá! Meu nome é ' + nome + ', meu WhatsApp é ' + tel;
   if (empresa) msg += ', empresa: ' + empresa;
   msg += '. Quero saber mais sobre IA para meu negócio.';
-  window.open('https://wa.me/5511947343007?text=' + encodeURIComponent(msg), '_blank');
+  window.location.href = 'https://wa.me/5511947343007?text=' + encodeURIComponent(msg);
 });
+
+function copiarEmail() {
+  navigator.clipboard.writeText('contato@quantumbridge.com.br');
+  var el = document.getElementById('emailCopiado');
+  el.style.display = 'inline';
+  setTimeout(function(){ el.style.display = 'none'; }, 2000);
+}
 
 </script>
 
