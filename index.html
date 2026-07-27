@@ -409,24 +409,21 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.4)}
     <div class="form-card">
       <h3>Fale com a Quantum Bridge</h3>
       <p>Sem pressão. A gente descobre juntos o que faz sentido pro seu negócio.</p>
-      <form id="leadForm">
+      <form id="leadForm" action="https://formsubmit.co/contato@quantumbridge.com.br" method="POST">
+        <input type="hidden" name="_subject" value="Novo lead - Quantum Bridge">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://quantumbridge.com.br/obrigado.html">
         <div class="form-group">
-          <input type="text" id="leadNome" placeholder="Seu nome" required>
+          <input type="text" name="Nome" placeholder="Seu nome" required>
         </div>
         <div class="form-group">
-          <input type="tel" id="leadTel" placeholder="WhatsApp" required>
+          <input type="text" name="Telefone" placeholder="WhatsApp" required>
         </div>
         <div class="form-group">
-          <input type="text" id="leadEmpresa" placeholder="Nome da empresa">
+          <input type="text" name="Empresa" placeholder="Nome da empresa">
         </div>
         <button type="submit" class="form-btn">Quero saber mais</button>
       </form>
-      <div id="formSuccess" style="display:none;padding:20px;text-align:center">
-        <h3 style="font-family:Poppins,sans-serif;color:#002244;margin:0 0 8px">Obrigado, <span id="successNome"></span>!</h3>
-        <p style="color:#54595F;font-size:.85rem;margin:0 0 4px">Recebemos seu contato. Em instantes vamos te chamar no WhatsApp.</p>
-        <p style="color:#54595F;font-size:.75rem;margin:0">Caso não receba em alguns minutos, nos chame:</p>
-        <a href="https://wa.me/5511947343007" target="_blank" style="display:inline-block;margin-top:10px;background:#25D366;color:#fff;padding:8px 20px;border-radius:6px;text-decoration:none;font-weight:500;font-size:.85rem">Falar no WhatsApp</a>
-      </div>
     </div>
     <div class="contact-bar">
       <a href="https://wa.me/5511947343007" class="wa" target="_blank">Fale pelo WhatsApp</a>
@@ -445,22 +442,7 @@ function copiarEmail() {
   var el = document.getElementById('emailCopiado');
   el.style.display = 'inline';
   setTimeout(function(){ el.style.display = 'none'; }, 2000);
-}
-
-document.getElementById('leadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var nome = document.getElementById('leadNome').value.trim();
-  var tel = document.getElementById('leadTel').value.trim();
-  var empresa = document.getElementById('leadEmpresa').value.trim();
-  if (!nome || !tel) return;
-  document.getElementById('formSuccess').style.display = 'block';
-  document.getElementById('successNome').textContent = nome;
-  this.style.display = 'none';
-  var msg = 'Olá! Meu nome é ' + nome + ', meu WhatsApp é ' + tel;
-  if (empresa) msg += ', empresa: ' + empresa;
-  msg += '. Quero saber mais sobre IA para meu negócio.';
-  window.open('https://wa.me/5511947343007?text=' + encodeURIComponent(msg), '_blank');
-});
+};
 
 </script>
 
