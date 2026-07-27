@@ -443,7 +443,14 @@ document.getElementById('leadForm').addEventListener('submit', function(e) {
   var msg = 'Olá! Meu nome é ' + nome + ', meu WhatsApp é ' + tel;
   if (empresa) msg += ', empresa: ' + empresa;
   msg += '. Quero saber mais sobre IA para meu negócio.';
-  window.location.href = 'https://wa.me/5511947343007?text=' + encodeURIComponent(msg);
+  var btn = this.querySelector('.form-btn');
+  btn.textContent = 'Preparando...';
+  btn.disabled = true;
+  var f = this;
+  setTimeout(function() {
+    window.open('https://wa.me/5511947343007?text=' + encodeURIComponent(msg), '_blank');
+    f.innerHTML = '<div style="padding:20px;text-align:center"><h3 style="font-family:Poppins,sans-serif;color:#002244;margin:0 0 8px">Mensagem preparada!</h3><p style="font-family:Inter,sans-serif;color:#54595F;font-size:.85rem;margin:0">Confirme o envio no WhatsApp que foi aberto.</p></div>';
+  }, 400);
 });
 
 function copiarEmail() {
